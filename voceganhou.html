@@ -1,75 +1,87 @@
 <html>
+
 <head>
-  <style>
-    /* Define a classe para os balões */
-    .balloon {
-      position: absolute;
-      width: 50px;
-      height: 70px;
-      border-radius: 50%;
-      animation: float 5s forwards;
-    }
-    /* Define a animação para os balões */
-    @keyframes float {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-100vh);
-      }
-    }
-    /* Define a cor dos balões */
-    .red {
-      background-color: #ff4136;
-    }
-    .blue {
-      background-color: #0074d9;
-    }
-    .yellow {
-      background-color: #ffdc00;
-    }
-    .green {
-      background-color: #2ecc40;
-    }
-    /* Define a classe para os fios */
-    .string {
-      width: 2px;
-      height: 90px;
-      background-color: #fff;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  </style>
+    <style>
+        /* Define a classe para os balões */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            animation: float 5s forwards;
+        }
+
+        /* Define a animação para os balões */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100vh);
+            }
+        }
+
+        /* Define a cor dos balões */
+        .red {
+            background-color: #ff4136;
+        }
+
+        .blue {
+            background-color: #0074d9;
+        }
+
+        .yellow {
+            background-color: #ffdc00;
+        }
+
+        .green {
+            background-color: #2ecc40;
+        }
+
+        /* Define a classe para os fios */
+        .string {
+            width: 2px;
+            height: 90px;
+            background-color: #fff;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
 </head>
+
 <body style="background-color: #81C784;">
-  <div style="text-align:center; padding: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    <h1 style="color: #fff; font-size: 48px;">Você Ganhou!</h1>
-    <p style="color: #fff; font-size: 24px;">Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um prêmio!</p>
-  </div>
-  <div class="balloon red">
-    <div class="string"></div>
-  </div>
-  <div class="balloon blue">
-    <div class="string"></div>
-  </div>
-  <div class="balloon yellow">
-    <div class="string"></div>
-  </div>
-  <div class="balloon green">
-    <div class="string"></div>
-  </div>
-  <script>
-    // Obtém uma referência para todos os balões
-    var balloons = document.getElementsByClassName("balloon");
-    // Define uma posição aleatória para cada balão
-    for (var i = 0; i < balloons.length; i++) {
-      var x = Math.floor(Math.random() * window.innerWidth);
-      var y = Math.floor(Math.random() * window.innerHeight);
-      balloons[i].style.left = x + "px";
-      balloons[i].style.top = y + "px";
-    }
-  </script>
+    <div
+        style="text-align:center; padding: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1 style="color: #fff; font-size: 48px;">Você Ganhou!</h1>
+        <p style="color: #fff; font-size: 24px;">Mostre essa tela para os criadores do jogo, e caso sejas o primeiro
+            vencedor, ganharás um prêmio!</p>
+    </div>
+    <div class="balloon red">
+        <div class="string"></div>
+    </div>
+    <div class="balloon blue">
+        <div class="string"></div>
+    </div>
+    <div class="balloon yellow">
+        <div class="string"></div>
+    </div>
+    <div class="balloon green">
+        <div class="string"></div>
+    </div>
+    <script>
+        var balloons = document.querySelectorAll('.balloon');
+        // Posiciona cada balão e fio na tela
+        balloons.forEach(function (balloon) {
+            var x = Math.floor(Math.random() * window.innerWidth);
+            var y = Math.floor(Math.random() * window.innerHeight);
+            balloon.style.left = x + 'px';
+            balloon.style.top = y + 'px';
+        });
+    </script>
+
 </body>
+
 </html>
