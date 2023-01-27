@@ -1,17 +1,58 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <style>
-        /* Define a classe para os balões */
+        /* Estilo da tela de vitória */
+        body {
+            background-color: #ffd700;
+            /* Cor amarela vibrante */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Estilo da frase "Você Ganhou!" */
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 2px #000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo da frase "Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!" */
+        p {
+            font-size: 1.5em;
+            color: #fff;
+            text-shadow: 2px 2px 2px #000;
+            text-align: center;
+        }
+
+        /* Estilo dos balões */
         .balloon {
             position: absolute;
             width: 50px;
-            height: 70px;
+            height: 80px;
+            background-color: #ff69b4;
+            /* Cor rosa vibrante */
             border-radius: 50%;
-            animation: float 5s forwards;
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Define a animação para os balões */
+        /* Estilo dos fios dos balões */
+        .string {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background-color: #fff;
+            bottom: 0;
+            left: 25px;
+            /* Centraliza o fio no balão */
+        }
+
+        /* Animação dos balões */
         @keyframes float {
             0% {
                 transform: translateY(0);
@@ -22,66 +63,80 @@
             }
         }
 
-        /* Define a cor dos balões */
-        .red {
-            background-color: #ff4136;
-        }
-
-        .blue {
-            background-color: #0074d9;
-        }
-
-        .yellow {
-            background-color: #ffdc00;
-        }
-
-        .green {
-            background-color: #2ecc40;
-        }
-
-        /* Define a classe para os fios */
-        .string {
-            width: 2px;
-            height: 90px;
-            background-color: #fff;
+        /* Estilo dos confetes */
+        .confetti {
             position: absolute;
-            bottom: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: fall 4s ease-in-out infinite;
+        }
+
+        /* Animação dos confetes */
+        @keyframes fall {
+            0% {
+                transform: translateY(-50vh);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Posiciona os balões na tela */
+        .balloon:nth-child(1) {
+            left: 10%;
+            top: 10%;
+        }
+
+        .balloon:nth-child(2) {
             left: 50%;
-            transform: translateX(-50%);
+            top: 20%;
+            margin-left: -25px;
+            /* Centraliza o balão no eixo horizontal */
+        }
+
+        .balloon:nth-child(3) {
+            left: 90%;
+            top: 30%;
+        }
+
+        /* Posiciona os confetes na tela */
+        .confetti:nth-child(1) {
+            left: 25%;
+            top: 50%;
+        }
+
+        .confetti:nth-child(2) {
+            left: 50%;
+            top: 55%;
+        }
+
+        .confetti:nth-child(3) {
+            left: 75%;
+            top: 60%;
         }
     </style>
 </head>
 
-<body style="background-color: #81C784;">
-    <div
-        style="text-align:center; padding: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <h1 style="color: #fff; font-size: 48px;">Você Ganhou!</h1>
-        <p style="color: #fff; font-size: 24px;">Mostre essa tela para os criadores do jogo, e caso sejas o primeiro
-            vencedor, ganharás um prêmio!</p>
-    </div>
-    <div class="balloon red">
+<body>
+    <h1>Você Ganhou!</h1>
+    <p>Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!</p>
+    <div class="balloon">
         <div class="string"></div>
     </div>
-    <div class="balloon blue">
+    <div class="balloon">
         <div class="string"></div>
     </div>
-    <div class="balloon yellow">
+    <div class="balloon">
         <div class="string"></div>
     </div>
-    <div class="balloon green">
-        <div class="string"></div>
-    </div>
-    <script>
-        var balloons = document.querySelectorAll('.balloon');
-        // Posiciona cada balão e fio na tela
-        balloons.forEach(function (balloon) {
-            var x = Math.floor(Math.random() * window.innerWidth);
-            var y = Math.floor(Math.random() * window.innerHeight);
-            balloon.style.left = x + 'px';
-            balloon.style.top = y + 'px';
-        });
-    </script>
-
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
 </body>
 
 </html>
