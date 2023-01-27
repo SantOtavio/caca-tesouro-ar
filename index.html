@@ -18,7 +18,7 @@
             background-color: #87CEFA;
         }
 
-        Copy code .camera-container {
+        .camera-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -60,25 +60,25 @@
 <body>
     <h1>Caça ao Tesouro SENAI</h1>
     <div class="camera-container">
-        <a-scene embedded vr-mode-ui="enabled: false"
+        <a-scene embedded vr-mode-ui="enabled: false" id="camera"
             arjs="trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false; changeMatrixMode: cameraTransformMatrix">
             <a-entity camera>
                 <a-marker class="game-marker" id="marker1" type="barcode" data-code="1" value="63"
                     registerevents="true">
-                    <a-video id="camera" src="#video" width="3" height="3" rotation="-90 0 0" position="0 0 -1.5 -5"
-                        scale="1 1 1 1" transparent>
-                    </a-video>
                 </a-marker>
+
+                <a-image src="pista1.png" width="1" height="1" position="0 0 0"
+                    rotation="0 0 0" scale="0.5 0.5 0.5" visible="false">
             </a-entity>
         </a-scene>
     </div>
-    <button id="continue-button" disabled>Continu
-
-        ar</button>
+    <button id="continue-button" disabled>Continuar</button>
     <script>
         // Código Javascript para habilitar o botão de continuar quando o marcador é detectado
         const marker = document.querySelector('.game-marker');
         const continueButton = document.querySelector('#continue-button');
+
+        continueButton.disabled = true;
 
 
         marker.addEventListener('markerFound', () => {
