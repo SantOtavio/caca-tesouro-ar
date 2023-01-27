@@ -1,142 +1,25 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <style>
-        /* Estilo da tela de vitória */
-        body {
-            background-color: #ffd700;
-            /* Cor amarela vibrante */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        /* Estilo da frase "Você Ganhou!" */
-        h1 {
-            font-size: 3em;
-            color: #fff;
-            text-shadow: 2px 2px 2px #000;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Estilo da frase "Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!" */
-        p {
-            font-size: 1.5em;
-            color: #fff;
-            text-shadow: 2px 2px 2px #000;
-            text-align: center;
-        }
-
-        /* Estilo dos balões */
-        .balloon {
-            position: absolute;
-            width: 50px;
-            height: 80px;
-            background-color: #ff69b4;
-            /* Cor rosa vibrante */
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Estilo dos fios dos balões */
-        .string {
-            position: absolute;
-            width: 2px;
-            height: 60px;
-            background-color: #fff;
-            bottom: 0;
-            left: 25px;
-            /* Centraliza o fio no balão */
-        }
-
-        /* Animação dos balões */
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-100vh);
-            }
-        }
-
-        /* Estilo dos confetes */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: fall 4s ease-in-out infinite;
-        }
-
-        /* Animação dos confetes */
-        @keyframes fall {
-            0% {
-                transform: translateY(-50vh);
-            }
-
-            100% {
-                transform: translateY(100vh);
-            }
-        }
-
-        /* Posiciona os balões na tela */
-        .balloon:nth-child(1) {
-            left: 10%;
-            top: 10%;
-        }
-
-        .balloon:nth-child(2) {
-            left: 50%;
-            top: 20%;
-            margin-left: -25px;
-            /* Centraliza o balão no eixo horizontal */
-        }
-
-        .balloon:nth-child(3) {
-            left: 90%;
-            top: 30%;
-        }
-
-        /* Posiciona os confetes na tela */
-        .confetti:nth-child(1) {
-            left: 25%;
-            top: 50%;
-        }
-
-        .confetti:nth-child(2) {
-            left: 50%;
-            top: 55%;
-        }
-
-        .confetti:nth-child(3) {
-            left: 75%;
-            top: 60%;
-        }
-    </style>
+  <style>
+    body{
+        background-image: url("baloes.jpg");
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .message {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Você Ganhou!</h1>
-    <p>Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!</p>
-    <div class="balloon">
-        <div class="string"></div>
-    </div>
-    <div class="balloon">
-        <div class="string"></div>
-    </div>
-    <div class="balloon">
-        <div class="string"></div>
-    </div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
+  <div class="message">Você Ganhou!</div>
+  <div class="message">Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!</div>
 </body>
-
 </html>
