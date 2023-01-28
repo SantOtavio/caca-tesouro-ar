@@ -89,6 +89,9 @@
             font-size: 1.5em;
             text-align: center;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .modal button {
@@ -121,18 +124,17 @@
         .show-modal {
             display: block;
         }
+
+        .modal-botao{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
     <h1>Caça ao Tesouro SENAI</h1>
-    <img class="notebook-button" src="notebook-icon.png" onclick="showModal()">
-    <div class="modal">
-        <p>Frase teste</p>
-
-        <button onclick="hideModal()">Fechar</button>
-    </div>
-    <div class="modal-overlay"></div>
     <a-scene embedded vr-mode-ui="enabled: false"
         arjs="trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false; changeMatrixMode: cameraTransformMatrix">
         <a-entity camera>
@@ -143,6 +145,14 @@
             </a-marker>
         </a-entity>
     </a-scene>
+    <img class="notebook-button" src="notebook-icon.png" onclick="showModal()">
+    <div class="modal">
+        <p>Aqui estarão suas pistas, sempre que precisar, de uma olhada para relembrar!</p>
+        <div class="modal-botao">
+            <button onclick="hideModal()">Fechar</button>
+        </div>
+    </div>
+    <div class="modal-overlay"></div>
     <button id="continue-button" disabled>Procurando marcador...</button>
     <script>
         // Código Javascript para habilitar o botão de continuar quando o marcador é detectado
@@ -173,6 +183,7 @@
             // Show the modal and overlay
             document.querySelector(".modal").classList.add("show-modal");
             document.querySelector(".modal-overlay").classList.add("show-modal");
+            console.log("show modal");
         }
 
         function hideModal() {
