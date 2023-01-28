@@ -1,34 +1,134 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <style>
-    body {
-      background-color: #F8D1CC; /* cor de fundo animada */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .victory-message {
-      color: #F8D1CC; /* cor da fonte combinando com a cor de fundo */
-      text-align: center;
-      font-size: 3em; /* tamanho grande da fonte */
-      font-family: Arial, sans-serif; /* opção de fonte */
-    }
-    .subtitle {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 1.5em; /* tamanho grande da fonte */
-      font-family: Arial, sans-serif; /* opção de fonte */
-    }
-  </style>
+    <style>
+        /* Style for the victory screen */
+        body {
+            background-color: #FECE44;
+            /* Vibrant color for background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            /* Change font to something that looks good on mobile */
+        }
+
+        h1 {
+            font-size: 4em;
+            /* Large font size for the victory message */
+            text-align: center;
+            margin: 0;
+            color: #4C4C4C;
+            /* Font color that contrasts with the background */
+        }
+
+        p {
+            font-size: 2em;
+            /* Large font size for the prize message */
+            text-align: center;
+            margin: 0;
+            color: #4C4C4C;
+            /* Font color that contrasts with the background */
+        }
+
+        /* Style for the notebook button */
+        .notebook-button { 
+            position: fixed;
+            /* fix the button in place on the screen */
+            left: 20px;
+            /* position the button 20px from the left edge of the screen */
+            top: 50%;
+            /* position the button vertically centered */
+            transform: translateY(-50%);
+            /* move the button up by half of its own height */
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Style for the modal */
+        .modal {
+            position: fixed;
+            /* Position the modal in the center of the screen */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            /* Hide the modal by default */
+            z-index: 1;
+        }
+
+        .modal p {
+            font-size: 1.5em;
+            text-align: center;
+            margin: 0;
+        }
+
+        .modal button {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #FECE44;
+            /* Use the same color as the background */
+            color: #4C4C4C;
+            /* Use the same font color as the victory message */
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            /* Position the overlay to cover the entire screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Use a semi-transparent black for the overlay */
+            display: none;
+            /* Hide the overlay by default */
+        }
+
+        /* Show the modal and overlay when the notebook button is clicked */
+        .show-modal {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="victory-message">
-    Você Ganhou!
-  </div>
-  <div class="subtitle">
-    Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um prêmio!
-  </div>
+    <div>
+        <h1>Você Ganhou!</h1>
+        <p>Mostre essa tela para os criadores do jogo, e caso sejas o primeiro vencedor, ganharás um premio!</p>
+    </div>
+
+    <img class="notebook-button" src="notebook-icon.png" onclick="showModal()">
+
+    <div class="modal">
+        <p>Frase teste</p>
+
+        <button onclick="hideModal()">Fechar</button>
+    </div>
+    <div class="modal-overlay"></div>
+    <script>
+        function showModal() {
+            // Show the modal and overlay
+            document.querySelector(".modal").classList.add("show-modal");
+            document.querySelector(".modal-overlay").classList.add("show-modal");
+        }
+
+        function hideModal() {
+            // Hide the modal and overlay
+            document.querySelector(".modal").classList.remove("show-modal");
+            document.querySelector(".modal-overlay").classList.remove("show-modal");
+        }
+    </script>
 </body>
+
 </html>
