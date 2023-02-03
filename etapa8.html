@@ -55,33 +55,90 @@
             margin-top: 20px;
             color: red;
         }
+
+        .modal {
+            position: fixed;
+            /* Position the modal in the center of the screen */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            /* Hide the modal by default */
+            z-index: 1;
+        }
+
+        .modal p {
+            font-size: 1.5em;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal button {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #FECE44;
+            /* Use the same color as the background */
+            color: #4C4C4C;
+            /* Use the same font color as the victory message */
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            /* Position the overlay to cover the entire screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Use a semi-transparent black for the overlay */
+            display: none;
+            /* Hide the overlay by default */
+        }
+
+        /* Show the modal and overlay when the notebook button is clicked */
+        .show-modal {
+            display: block;
+        }
+
+        .modal-botao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
     <h1>Etapa 8</h1>
-        <a-scene embedded
-             vr-mode-ui="enabled: false"
-             arjs="trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false; changeMatrixMode: cameraTransformMatrix">
-             <a-entity
-                  camera>
-                  <a-marker class="game-marker"
-                      id="marker1"
-                      type="barcode"
-                      data-code="1"
-                      value="55"
-                      registerevents="true">
-                      <a-image src="./charada8.PNG"
-                         width="3"
-                         height="3"
-                         rotation="-90 0 0"
-                         position="0 0 -1.5 -5"
-                         scale="2 2 2 2"
-                         transparent>
+    <a-scene embedded vr-mode-ui="enabled: false"
+        arjs="trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false; changeMatrixMode: cameraTransformMatrix">
+        <a-entity camera>
+            <a-marker class="game-marker" id="marker1" type="barcode" data-code="1" value="1" registerevents="true">
+                <a-image src="./charada8.PNG" width="3" height="3" rotation="-90 0 0" position="0 0 -1.5 -5"
+                    scale="2 2 2 2" transparent>
                 </a-image>
             </a-marker>
         </a-entity>
     </a-scene>
+    <div class="modal">
+        <p>Pista 7: “Eu sou o local onde você pode deixar sua jardineira ou seu hatchback enquanto se ocupa com outras coisas.
+            Eu sou o lugar onde você pode guardar seu veículo enquanto aproveita a cidade ou seu trabalho.
+            Eu sou o espaço onde você pode estacionar seu carro sem se preocupar com a segurança dele.”            
+        </p>
+        <div class="modal-botao">
+            <button onclick="hideModal()">Fechar</button>
+        </div>
+    </div>
     <button id="continue-button" disabled>Procurando marcador...</button>
     <script>
         // Código Javascript para habilitar o botão de continuar quando o marcador é detectado
@@ -102,6 +159,19 @@
             continueButton.style.cursor = 'not-allowed';
             continueButton.innerHTML = 'Procurando marcador...';
         });
+
+        function showModal() {
+            // Show the modal and overlay
+            document.querySelector(".modal").classList.add("show-modal");
+            document.querySelector(".modal-overlay").classList.add("show-modal");
+            console.log("show modal");
+        }
+
+        function hideModal() {
+            // Hide the modal and overlay
+            document.querySelector(".modal").classList.remove("show-modal");
+            document.querySelector(".modal-overlay").classList.remove("show-modal");
+        }
 
         // Código para direcionar o usuário para a próxima etapa quando o botão é clicado
         continueButton.addEventListener('click', () => {
