@@ -158,8 +158,8 @@
             submitButton.addEventListener('click', () => {
                 const passwordInput = document.querySelector('#passwordInput');
                 const password = passwordInput.value;
-                if (password === 'silk road'.toLowerCase()) {
-                    showModal();
+                if (password.toLowerCase() === 'silk road') {
+                    window.location.href = 'voceganhou.html';
                 } else {
                     alert('Senha incorreta!');
                 }
